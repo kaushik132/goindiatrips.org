@@ -10,4 +10,21 @@ class HomeController extends Controller
     {
         return view('index');
     }
+    public function aboutUs()
+    {
+        return view('about-us');
+    }
+    public function gallery()
+    {
+        return view('gallery');
+    }
+    public function tourandpackage()
+    {
+        return view('tour-and-package');
+    }
+
+    public function tourdetails()
+    {
+        return view('tour-details');
+    }
 }

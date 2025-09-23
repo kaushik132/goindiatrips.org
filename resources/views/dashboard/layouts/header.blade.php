@@ -27,24 +27,26 @@
   <div class="w-full flex justify-between items-center">
     <!-- Logo -->
     <div>
-      <a href="./index.html">
+      <a href="{{url('/')}}">
         <img class="w-[60px] md:w-[90px]" src="./images/logo.png" alt="Logo" />
       </a>
     </div>
 <!-- Desktop Menu -->
 <nav  class="hidden lg:block">
   <ul class="flex gap-8 text-[15px] relative">
-    <li><a href="#" class="activeLink">Home</a></li>
-    <li><a href="#">About Us</a></li>
-    <li><a href="#">Gallery</a></li>
+    <li><a href="{{url('/')}}" class="activeLink">Home</a></li>
+    <li><a href="{{url('about-us')}}">About Us</a></li>
+    <li><a href="{{url('gallery')}}">Gallery</a></li>
 
     <!-- Dropdown Parent -->
     <li class="relative group">
-      <button
+        <button
         class="flex items-center gap-1 focus:outline-none"
         onclick="toggleDropdown('tourDropdown')"
-      >
+        >
+        <a href="{{url('tour-and-package')}}" >
         Tour & Packages
+    </a>
         <i class="fa-solid fa-chevron-down text-[12px]"></i>
       </button>
 
@@ -119,7 +121,7 @@
     class="md:hidden overflow-hidden max-h-0 shadow-lg tansition-all duration-500 ease-in-out text-black w-full">
     <div class="px-4 py-4">
      <div class="flex flex-col space-y-2">
-  <a href="/index.html" class="block text-md">Home</a>
+  <a href="{{url('/')}}" class="block text-md">Home</a>
 
   <!-- Dropdown Wrapper -->
   <div class="relative">
@@ -155,7 +157,8 @@
     </div>
   </div>
 
-  <a href="/gallery.html" class="block text-md">Gallery</a>
+  <a href="{{url('about-us')}}" class="block text-md">About Us</a>
+  <a href="{{url('gallery')}}" class="block text-md">Gallery</a>
   <a href="/contact-us.html" class="block text-md">Contact Us</a>
 </div>
 

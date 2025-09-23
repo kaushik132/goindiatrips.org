@@ -706,7 +706,7 @@ body {
   <div class="sky-bg"></div>
   <div class="wave-7"></div>
   <div class="wave-6"></div>
-  <a class="wave-island" href="#">
+  <a class="wave-island" href="{{url('/')}}">
     <img src="http://res.cloudinary.com/andrewhani/image/upload/v1524501929/404/island.svg" alt="Island">
   </a>
   <div class="wave-5"></div>

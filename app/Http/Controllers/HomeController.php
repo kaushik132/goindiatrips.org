@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Gallery;
+use App\Models\Video;
 
 class HomeController extends Controller
 {
@@ -16,7 +18,9 @@ class HomeController extends Controller
     }
     public function gallery()
     {
-        return view('gallery');
+        $gallery = Gallery::all();
+        $video = Video::all();
+        return view('gallery' ,compact('gallery','video'));
     }
     public function tourandpackage()
     {

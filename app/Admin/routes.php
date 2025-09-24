@@ -13,4 +13,5 @@ Route::group([
 
     $router->get('/', 'HomeController@index')->name('home');
     $router->resource('galleries', GalleryController::class);
+    $router->resource('videos', VideoContorller::class);
 });

@@ -21,3 +21,5 @@ Route::get('about-us',[HomeController::class,'aboutUs'])->name('about-us');
 Route::get('gallery',[HomeController::class,'gallery'])->name('gallery');
 Route::get('tour-and-package',[HomeController::class,'tourandpackage'])->name('tour-and-package');
 Route::get('tour-details',[HomeController::class,'tourdetails'])->name('tour-and-package');
+Route::get('contact-us',[HomeController::class,'cont
+actUs'])->name('contact-us');

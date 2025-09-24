@@ -27,4 +27,8 @@ class HomeController extends Controller
     {
         return view('tour-details');
     }
+    public function contactUs()
+    {
+        return view('contact-us');
+    }
 }

@@ -101,7 +101,7 @@
       </ul>
     </li>
 
-    <li><a href="#">Contact Us</a></li>
+    <li><a href="{{url('contact-us')}}">Contact Us</a></li>
   </ul>
 </nav>
 <div></div>
@@ -159,7 +159,7 @@
 
   <a href="{{url('about-us')}}" class="block text-md">About Us</a>
   <a href="{{url('gallery')}}" class="block text-md">Gallery</a>
-  <a href="/contact-us.html" class="block text-md">Contact Us</a>
+  <a href="{{url('contact-us')}}" class="block text-md">Contact Us</a>
 </div>
 
       <!-- Mobile Social Icons -->

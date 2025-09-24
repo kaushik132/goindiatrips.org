@@ -23,8 +23,6 @@ function twosum($array){
   }
 
 
-
-
 $k =  twosum($array);
 foreach($k as $val){
     echo $val . " ";

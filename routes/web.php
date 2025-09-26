@@ -22,3 +22,4 @@ Route::get('gallery',[HomeController::class,'gallery'])->name('gallery');
 Route::get('tour-and-package',[HomeController::class,'tourandpackage'])->name('tour-and-package');
 Route::get('tour-details',[HomeController::class,'tourdetails'])->name('tour-and-package');
 Route::get('contact-us',[HomeController::class,'contactUs'])->name('contact-us');
+Route::post('contact-us',[HomeController::class,'contactUsPost'])->name('contact-us-post');

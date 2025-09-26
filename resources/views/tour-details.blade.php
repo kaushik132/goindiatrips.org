@@ -156,12 +156,12 @@
 
                         <div class="flex gap-2">
                             <i class="fa-solid fa-calendar text-[#3D6687] text-[14px] lg:text-[18px]"></i>
-                            <p class="text-[#8C7858] text-[13px] lg:text-[16px]">8 hours</p>
+                            <p class="text-[#8C7858] text-[13px] lg:text-[16px]">8 Hours</p>
                         </div>
 
                         <div class="flex gap-2">
                             <i class="fa-solid fa-star text-[#3D6687] text-[14px] lg:text-[18px]"></i>
-                            <p class="text-[#8C7858] text-[13px] lg:text-[16px]">8 hours</p>
+                            <p class="text-[#8C7858] text-[13px] lg:text-[16px]">8 Person</p>
                         </div>
                     </div>
                 </div>
@@ -717,5 +717,5 @@
             menu.classList.toggle("hidden");
             icon.classList.toggle("rotate-180"); // arrow rotate effect
         }
-    </script> 
+    </script>
 @endsection

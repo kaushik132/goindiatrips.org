@@ -16,4 +16,6 @@ Route::group([
     $router->resource('videos', VideoContorller::class);
     $router->resource('contact-uses', ContactUsController::class);
     $router->resource('tour-categories', TourCategoryController::class);
+    $router->resource('tours', TourController::class);
+    $router->resource('tourdetails', TourDetailsController::class);
 });

@@ -6,9 +6,23 @@ use Illuminate\Http\Request;
 use App\Models\Gallery;
 use App\Models\Video;
 use App\Models\ContactUs;
+use App\Models\Tour;
+use App\Models\TourCategory;
+use App\Models\Tourdetails;
+use Illuminate\Support\Facades\View;
+
 
 class HomeController extends Controller
 {
+
+     public function __construct()
+  {
+     $headerTourCategory = TourCategory::first();
+     $headerTour = Tour::first();
+        View::share('info', $headerTourCategory);
+        View::share('info', $headerTour);
+  }
+
     public function index()
     {
         return view('index');

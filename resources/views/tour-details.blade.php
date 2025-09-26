@@ -244,9 +244,7 @@
                                             AM</span>
                                     </div>
                                     <div>
-                                        <h3 class="lg:text-[18px] text-[14px] font-medium">
-                                            Hotel Pickup
-                                        </h3>
+                                     
                                         <p class="lg:text-[16px] text-[10px] text-[#8C7858]">
                                             Comfortable pickup from your hotel in Jaipur city center
                                         </p>

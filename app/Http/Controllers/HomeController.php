@@ -37,14 +37,44 @@ class HomeController extends Controller
         $video = Video::all();
         return view('gallery' ,compact('gallery','video'));
     }
-    public function tourandpackage()
+    public function tourandpackage($slug = null)
     {
-        return view('tour-and-package');
+        //  $homepage = Title::select('seo_title_tour','seo_des_tour','seo_key_tour','seo_image_tour')->first();
+        if ($slug != null) {
+            $tourCategory = TourCategory::where('slug', $slug)->first();
+            $tourdata = Tour::latest()->with('tourCategorys')->where('tour_id', $tourCategory->id)->paginate(6);
+                       $seo_data['seo_description'] =$tourCategory->seo_description;
+            //    $seo_data['keywords'] =$tourCategory->seo_keyword;
+            //    $seo_data['seo_title'] =$tourCategory->seo_title;
+            //    $seo_data['seo_image'] =$tourCategory->thumnail_image;
+            //  $canocial ='https://www.namastebharat.com/tour-categories/'.$slug;
+
+        } else {
+
+            $tourdata = Tour::latest()->with('tourCategorys')->paginate(6);
+            //                $seo_data['seo_title'] =$homepage->seo_title_tour;
+            //      $seo_data['seo_description'] =$homepage->seo_des_tour;
+            //    $seo_data['keywords'] =$homepage->seo_key_tour;
+            //    $seo_data['seo_image'] =$homepage->seo_image_tour;
+            //    $canocial ='https://www.namastebharat.com/tour-categories';
+        }
+        $alltourcategory = TourCategory::where('status', 1)->latest()->get();
+        return view('tour-and-package' ,compact('tourdata','alltourcategory'));
     }
 
-    public function tourdetails()
+    public function tourdetails($slug = null)
     {
-        return view('tour-details');
+            // $alltour = Tour::inRandomOrder()->with('tourCategorys')->get();
+        $tourData = Tour::with('tourCategorys')->where('slug', $slug)->first();
+        // $seo_data['seo_title'] = $tourData->seo_title;
+        // $seo_data['seo_description'] = $tourData->seo_description;
+        // $seo_data['keywords'] = $tourData->seo_keyword;
+        // $seo_data['seo_image'] = $tourData->thumnail_image;
+        // $canocial = 'https://www.namastebharat.com/tour-details/' . $tourData->slug;
+
+
+        $destinationsdetails = Tourdetails::orderBy('order_num', 'asc')->where('package_id', $tourData->id)->get();
+        return view('tour-details', compact('tourData','destinationsdetails'));
     }
     public function contactUs()
     {

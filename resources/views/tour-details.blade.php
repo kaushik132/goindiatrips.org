@@ -2,7 +2,7 @@
 @section('container.main')
     <!-- hero section -->
     <section id="heroSection"
-        class="bg-[url('./images/21.jpg')] relative bg-no-repeat bg-center bg-cover pt-[110px] pb-[210px] lg:pb-[100px] lg:py-[160px]">
+        class="bg-[url('{{url('uploads/'.$tourData->banner_image)}}')] relative bg-no-repeat bg-center bg-cover pt-[110px] pb-[210px] lg:pb-[100px] lg:py-[160px]">
         <div class="text-center">
             <h2 class="lg:text-[48px] text-white text-[24px] font-semibold -mt-1 lg:-mt-3">
                 Albert Hall
@@ -89,12 +89,12 @@
     <section class="lg:px-14 px-6 pt-[80px]">
         <div class="grid lg:grid-cols-3 grid-cols-2 auto-rows-[100px] lg:auto-rows-[145px] gap-3 lg:gap-4">
             <div class="col-span-2 row-span-4 relative">
-                <img class="w-full h-full rounded-[30px]" src="./images/22.jpg" alt="" />
+                <img class="w-full h-full rounded-[30px]" src="{{url('uploads/'.$tourData->thumnail_image)}}" alt="tour deatils" />
 
                 <div class="flex justify-between items-center w-full absolute bottom-0 left-0 lg:px-8 px-4 py-4 lg:py-8">
                     <div class="bg-[rgba(0,0,0,.7)] rounded-lg lg:px-6 px-4 py-3 inline-block">
                         <p class="lg:text-[14px] text-[10px] text-white">
-                            The magnificent Hawa Mahal - Palace of Winds
+                           {{$tourData->tourCategorys->name}}
                         </p>
                     </div>
 
@@ -104,25 +104,37 @@
                 </div>
             </div>
 
-            <div class="col-span-1">
-                <img class="w-full rounded-[30px] object-cover h-full" src="./images/23.jpg" alt="" />
-            </div>
 
-            <div class="col-span-1">
-                <img class="w-full rounded-[30px] object-cover h-full" src="./images/about-us-banner.jpg" alt="" />
-            </div>
+         @php
+    $gallery = $tourData->gallery; // already array
+    $totalImages = count($gallery);
+@endphp
 
-            <div class="col-span-1">
-                <img class="w-full rounded-[30px] object-cover h-full" src="./images/21.jpg" alt="" />
-            </div>
+{{-- Grid wrapper --}}
 
-            <div class="col-span-1 relative">
-                <img class="w-full rounded-[30px] object-cover h-full" src="./images/7.jpg" alt="" />
-                <div
-                    class="bg-[rgba(0,0,0,.4)] h-full w-full rounded-[30px] absolute top-0 left-0 flex justify-center items-center">
-                    <p class="text-[32px] text-white font-semibold">24+</p>
+    @foreach ($gallery as $key => $image)
+        {{-- पहले 4 ही दिखाने हैं --}}
+        @if ($key < 4)
+            {{-- अगर ये आखिरी दिखने वाली image है और total > 4 --}}
+            @if ($key === 3 && $totalImages > 4)
+                <div class="col-span-1 relative">
+                    <img class="w-full rounded-[30px] object-cover h-full"
+                         src="{{ url('uploads/'.$image) }}" alt="" />
+                    <div
+                        class="bg-[rgba(0,0,0,.4)] h-full w-full rounded-[30px] absolute top-0 left-0 flex justify-center items-center">
+                        <p class="text-[32px] text-white font-semibold">+{{ $totalImages - 4 }}</p>
+                    </div>
                 </div>
-            </div>
+            @else
+                <div class="col-span-1">
+                    <img class="w-full rounded-[30px] object-cover h-full"
+                         src="{{ url('uploads/'.$image) }}" alt="" />
+                </div>
+            @endif
+        @endif
+    @endforeach
+
+
         </div>
     </section>
 
@@ -131,37 +143,37 @@
             <div class="lg:col-span-2">
                 <div>
                     <span
-                        class="bg-[#E2AC55] lg:px-6 px-4 py-2 text-[12px] lg:text-[15px] text-white font-medium rounded-lg">Heritage</span>
+                        class="bg-[#E2AC55] lg:px-6 px-4 py-2 text-[12px] lg:text-[15px] text-white font-medium rounded-lg"> {{$tourData->tourCategorys->name}}</span>
 
                     <span
-                        class="bg-[#2B9E4B] lg:ml-3 ml-2 lg:px-6 px-4 py-2 text-[12px] lg:text-[15px] text-white font-medium rounded-lg">17%
+                        class="bg-[#2B9E4B] lg:ml-3 ml-2 lg:px-6 px-4 py-2 text-[12px] lg:text-[15px] text-white font-medium rounded-lg">{{$tourData->discount_off}}
                         OFF</span>
                 </div>
 
                 <div class="mt-4">
                     <h2 class="lg:text-[42px] text-[22px] font-medium">
-                        Classic Jaipur Heritage Tour
+                        {{$tourData->title}}
                     </h2>
                     <p class="text-[#8C7858] lg:text-[18px] text-[14px] lg:-mt-1">
-                        Discover the Royal Legacy of the Pink City
+                        {{$tourData->short_description}}
                     </p>
 
                     <div class="mt-5 flex lg:gap-14 gap-5 items-center">
                         <div class="flex gap-2">
                             <i class="fa-solid fa-star text-[#3D6687] text-[14px] lg:text-[18px]"></i>
                             <p class="text-[#8C7858] text-[13px] lg:text-[16px]">
-                                4.6 (126 Review)
+                                {{$tourData->rating}} ({{$tourData->review}} Review)
                             </p>
                         </div>
 
                         <div class="flex gap-2">
                             <i class="fa-solid fa-calendar text-[#3D6687] text-[14px] lg:text-[18px]"></i>
-                            <p class="text-[#8C7858] text-[13px] lg:text-[16px]">8 Hours</p>
+                            <p class="text-[#8C7858] text-[13px] lg:text-[16px]">{{$tourData->time_date}}</p>
                         </div>
 
                         <div class="flex gap-2">
                             <i class="fa-solid fa-star text-[#3D6687] text-[14px] lg:text-[18px]"></i>
-                            <p class="text-[#8C7858] text-[13px] lg:text-[16px]">8 Person</p>
+                            <p class="text-[#8C7858] text-[13px] lg:text-[16px]">{{$tourData->number_of_person}}</p>
                         </div>
                     </div>
                 </div>
@@ -170,17 +182,11 @@
                     <h2 class="lg:text-[32px] text-[20px]">Tour Overview</h2>
 
                     <p class="mt-1 lg:text-[16px] text-[12px]">
-                        Embark on a journey through time as you explore Jaipur's most
-                        iconic monuments and palaces. This comprehensive heritage tour
-                        takes you through the architectural marvels that showcase the
-                        grandeur of Rajput and Mughal dynasties. From the intricate
-                        windows of Hawa Mahal to the astronomical precision of Jantar
-                        Mantar, experience the royal legacy that earned Jaipur its UNESCO
-                        World Heritage status.
+                        {!!$tourData->description!!}
                     </p>
                 </div>
 
-                <div class="lg:mt-10 mt-6">
+                {{-- <div class="lg:mt-10 mt-6">
                     <h2 class="lg:text-[32px] text-[20px]">Tour Highlights</h2>
 
                     <ul class="mt-1 list-disc pl-5 space-y-2 lg:text-[16px] text-[12px]">
@@ -199,7 +205,7 @@
                             <p>Professional photography assistance at key locations</p>
                         </li>
                     </ul>
-                </div>
+                </div> --}}
 
                 <!-- Tabs -->
                 <div class="lg:mt-12 mt-8 flex justify-center">
@@ -215,7 +221,7 @@
                         <li>
                             <button onclick="openTab('inclusion')" id="tab-inclusion"
                                 class="tab-btn block px-6 py-2 rounded-full text-black hover:bg-white hover:shadow">
-                                Inclusion
+                                Inclusion & Exclusion
                             </button>
                         </li>
 
@@ -231,7 +237,7 @@
                 <!-- Content Wrapper -->
                 <div class="lg:mt-12 mt-14 border-[#C4C4C4] border lg:px-10 px-6 py-6 rounded-[30px]">
                     <!-- Itinerary Content -->
-                    <div id="content-itinerary" class="tab-content">
+                    {{-- <div id="content-itinerary" class="tab-content">
                         <h2 class="lg:text-[22px] text-[16px]">
                             Day 1: Royal Heritage Discovery
                         </h2>
@@ -244,7 +250,7 @@
                                             AM</span>
                                     </div>
                                     <div>
-                                     
+
                                         <p class="lg:text-[16px] text-[10px] text-[#8C7858]">
                                             Comfortable pickup from your hotel in Jaipur city center
                                         </p>
@@ -253,7 +259,34 @@
                                 <!-- aur bhi items ... -->
                             </ul>
                         </div>
+                    </div> --}}
+
+                    <div id="content-itinerary" class="tab-content">
+    @foreach ($destinationsdetails as $dayIndex => $detail)
+        <h2 class="lg:text-[22px] text-[16px]">
+            Day {{ $dayIndex + 1 }}: {{ $detail->name }}
+        </h2>
+
+        <div class="mt-8">
+            <ul class="space-y-8">
+                <li class="flex lg:gap-4 gap-1">
+                    <div>
+                        <span
+                            class="block w-[70px] lg:w-auto border-[#E7E7E7] border px-3 py-1.5 text-[10px] lg:text-[12px] rounded-lg">
+                            {{ $detail->time }}
+                        </span>
                     </div>
+                    <div>
+                        <p class="lg:text-[16px] text-[10px] text-[#8C7858]">
+                            {{ $detail->description }}
+                        </p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    @endforeach
+</div>
+
 
                     <!-- Inclusion Content -->
                     <div id="content-inclusion" class="tab-content hidden">

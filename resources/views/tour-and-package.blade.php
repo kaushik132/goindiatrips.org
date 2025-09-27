@@ -190,33 +190,38 @@
         <!-- Container -->
         <div id="tourSwiper" class="swiper mySwiper mt-12">
             <div class="swiper-wrapper">
+
+                {{-- section  --}}
+                @foreach ($tourdata as $touraa)
+
+
                 <div class="swiper-slide">
                     <div class="col-span-1 relative border-[#E4E6E8] border rounded-3xl">
                         <div>
-                            <img class="h-[270px] w-full object-cover rounded-t-3xl" src="./images/img1.jpg" alt />
+                            <img class="h-[270px] w-full object-cover rounded-t-3xl" src="{{url('uploads/'.$touraa->thumnail_image)}}" alt="tour" />
                         </div>
 
                         <div class="bg-white px-6 py-7 lg:py-9 rounded-3xl -mt-10 relative z-[99]">
                             <h3 class="lg:text-[20px] text-[16px] font-semibold">
-                                Singapore Skylines: Urban Exploration
+                               {{$touraa->title}}
                             </h3>
 
                             <div class="mt-2 flex gap-6">
                                 <div class="flex gap-1 items-center">
                                     <i class="fa-solid fa-clock text-[#737373] text-[10px]"></i>
-                                    <span class="text-[#737373] lg:text-[12px] text-[11px]">2 days 3 nights</span>
+                                    <span class="text-[#737373] lg:text-[12px] text-[11px]">{{$touraa->time_date}}</span>
                                 </div>
                                 <div class="flex gap-1 items-center">
                                     <i class="fa-solid fa-user text-[#737373] text-[10px]"></i>
-                                    <span class="text-[#737373] lg:text-[12px] text-[11px]">2 Person</span>
+                                    <span class="text-[#737373] lg:text-[12px] text-[11px]">{{$touraa->number_of_person}}</span>
                                 </div>
                             </div>
 
                             <div class="mt-6 flex justify-between items-center">
                                 <h2 class="font-semibold lg:text-[20px] text-[17px]">
-                                    ₹4800
+                                    {{$touraa->price}}
                                 </h2>
-                                <a href="{{url('tour-details')}}"
+                                <a href="{{url('tour-details/'.$touraa->slug)}}"
                                     class="lg:text-[14px] text-[12px] border-[#E4E6E8] border px-6 py-1.5 rounded-full">Book
                                     Now</a>
                             </div>
@@ -225,163 +230,25 @@
                                 class="border-[#E4E6E8] flex gap-2 items-center shadow border px-4 bg-white right-8 -top-4 py-1.5 absolute inline-block rounded-full">
                                 <i class="fa-solid fa-star text-[#FFC700] text-[11px] lg:text-[12px]"></i>
                                 <p class="lg:text-[12px] text-[11px] font-semibold">
-                                    4.96
-                                    <span class="text-[#737373] font-medium">(672 reviews)</span>
+                                    {{$touraa->rating}}
+                                    <span class="text-[#737373] font-medium">( {{$touraa->review}})</span>
                                 </p>
                             </div>
                         </div>
 
                         <div class="absolute top-4 left-4">
                             <span
-                                class="lg:text-[11px] text-[10px] font-medium text-[#F09814] bg-white px-5 py-1.5 rounded-full">Top
-                                Rated</span>
+                                class="lg:text-[11px] text-[10px] font-medium text-[#F09814] bg-white px-5 py-1.5 rounded-full"> {{$touraa->tourCategorys->name}}</span>
                         </div>
                     </div>
                 </div>
-                <div class="swiper-slide">
-                    <div class="col-span-1 relative border-[#E4E6E8] border rounded-3xl">
-                        <div>
-                            <img class="h-[270px] w-full object-cover rounded-t-3xl" src="./images/img1.jpg" alt />
-                        </div>
+                           @endforeach
 
-                        <div class="bg-white px-6 py-7 lg:py-9 rounded-3xl -mt-10 relative z-[99]">
-                            <h3 class="lg:text-[20px] text-[16px] font-semibold">
-                                Singapore Skylines: Urban Exploration
-                            </h3>
+                {{-- End section --}}
 
-                            <div class="mt-2 flex gap-6">
-                                <div class="flex gap-1 items-center">
-                                    <i class="fa-solid fa-clock text-[#737373] text-[10px]"></i>
-                                    <span class="text-[#737373] lg:text-[12px] text-[11px]">2 days 3 nights</span>
-                                </div>
-                                <div class="flex gap-1 items-center">
-                                    <i class="fa-solid fa-user text-[#737373] text-[10px]"></i>
-                                    <span class="text-[#737373] lg:text-[12px] text-[11px]">2 Person</span>
-                                </div>
-                            </div>
 
-                            <div class="mt-6 flex justify-between items-center">
-                                <h2 class="font-semibold lg:text-[20px] text-[17px]">
-                                    ₹4800
-                                </h2>
-                                <a href="#"
-                                    class="lg:text-[14px] text-[12px] border-[#E4E6E8] border px-6 py-1.5 rounded-full">Book
-                                    Now</a>
-                            </div>
 
-                            <div
-                                class="border-[#E4E6E8] flex gap-2 items-center shadow border px-4 bg-white right-8 -top-4 py-1.5 absolute inline-block rounded-full">
-                                <i class="fa-solid fa-star text-[#FFC700] text-[11px] lg:text-[12px]"></i>
-                                <p class="lg:text-[12px] text-[11px] font-semibold">
-                                    4.96
-                                    <span class="text-[#737373] font-medium">(672 reviews)</span>
-                                </p>
-                            </div>
-                        </div>
 
-                        <div class="absolute top-4 left-4">
-                            <span
-                                class="lg:text-[11px] text-[10px] font-medium text-[#F09814] bg-white px-5 py-1.5 rounded-full">Top
-                                Rated</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="col-span-1 relative border-[#E4E6E8] border rounded-3xl">
-                        <div>
-                            <img class="h-[270px] w-full object-cover rounded-t-3xl" src="./images/img1.jpg" alt />
-                        </div>
-
-                        <div class="bg-white px-6 py-7 lg:py-9 rounded-3xl -mt-10 relative z-[99]">
-                            <h3 class="lg:text-[20px] text-[16px] font-semibold">
-                                Singapore Skylines: Urban Exploration
-                            </h3>
-
-                            <div class="mt-2 flex gap-6">
-                                <div class="flex gap-1 items-center">
-                                    <i class="fa-solid fa-clock text-[#737373] text-[10px]"></i>
-                                    <span class="text-[#737373] lg:text-[12px] text-[11px]">2 days 3 nights</span>
-                                </div>
-                                <div class="flex gap-1 items-center">
-                                    <i class="fa-solid fa-user text-[#737373] text-[10px]"></i>
-                                    <span class="text-[#737373] lg:text-[12px] text-[11px]">2 Person</span>
-                                </div>
-                            </div>
-
-                            <div class="mt-6 flex justify-between items-center">
-                                <h2 class="font-semibold lg:text-[20px] text-[17px]">
-                                    ₹4800
-                                </h2>
-                                <a href="#"
-                                    class="lg:text-[14px] text-[12px] border-[#E4E6E8] border px-6 py-1.5 rounded-full">Book
-                                    Now</a>
-                            </div>
-
-                            <div
-                                class="border-[#E4E6E8] flex gap-2 items-center shadow border px-4 bg-white right-8 -top-4 py-1.5 absolute inline-block rounded-full">
-                                <i class="fa-solid fa-star text-[#FFC700] text-[11px] lg:text-[12px]"></i>
-                                <p class="lg:text-[12px] text-[11px] font-semibold">
-                                    4.96
-                                    <span class="text-[#737373] font-medium">(672 reviews)</span>
-                                </p>
-                            </div>
-                        </div>
-
-                        <div class="absolute top-4 left-4">
-                            <span
-                                class="lg:text-[11px] text-[10px] font-medium text-[#F09814] bg-white px-5 py-1.5 rounded-full">Top
-                                Rated</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="col-span-1 relative border-[#E4E6E8] border rounded-3xl">
-                        <div>
-                            <img class="h-[270px] w-full object-cover rounded-t-3xl" src="./images/img1.jpg" alt />
-                        </div>
-
-                        <div class="bg-white px-6 py-7 lg:py-9 rounded-3xl -mt-10 relative z-[99]">
-                            <h3 class="lg:text-[20px] text-[16px] font-semibold">
-                                Singapore Skylines: Urban Exploration
-                            </h3>
-
-                            <div class="mt-2 flex gap-6">
-                                <div class="flex gap-1 items-center">
-                                    <i class="fa-solid fa-clock text-[#737373] text-[10px]"></i>
-                                    <span class="text-[#737373] lg:text-[12px] text-[11px]">2 days 3 nights</span>
-                                </div>
-                                <div class="flex gap-1 items-center">
-                                    <i class="fa-solid fa-user text-[#737373] text-[10px]"></i>
-                                    <span class="text-[#737373] lg:text-[12px] text-[11px]">2 Person</span>
-                                </div>
-                            </div>
-
-                            <div class="mt-6 flex justify-between items-center">
-                                <h2 class="font-semibold lg:text-[20px] text-[17px]">
-                                    ₹4800
-                                </h2>
-                                <a href="#"
-                                    class="lg:text-[14px] text-[12px] border-[#E4E6E8] border px-6 py-1.5 rounded-full">Book
-                                    Now</a>
-                            </div>
-
-                            <div
-                                class="border-[#E4E6E8] flex gap-2 items-center shadow border px-4 bg-white right-8 -top-4 py-1.5 absolute inline-block rounded-full">
-                                <i class="fa-solid fa-star text-[#FFC700] text-[11px] lg:text-[12px]"></i>
-                                <p class="lg:text-[12px] text-[11px] font-semibold">
-                                    4.96
-                                    <span class="text-[#737373] font-medium">(672 reviews)</span>
-                                </p>
-                            </div>
-                        </div>
-
-                        <div class="absolute top-4 left-4">
-                            <span
-                                class="lg:text-[11px] text-[10px] font-medium text-[#F09814] bg-white px-5 py-1.5 rounded-full">Top
-                                Rated</span>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
     </section>
@@ -424,7 +291,7 @@
     </section>
 
     <section class="px-7 py-16 lg:px-14">
-        <div class="lg:mb-8 mb-6">
+        {{-- <div class="lg:mb-8 mb-6">
             <h2 class="text-[18px] lg:text-[26px] font-semibold">
                 Trending Tour & Packages
             </h2>
@@ -432,10 +299,10 @@
                 Walk through majestic forts, grand palaces, and timeless stories of
                 Rajasthan’s royal past.
             </p>
-        </div>
+        </div> --}}
 
         <!-- Container -->
-        <div id="tourSwiper" class="swiper mySwiper mt-12">
+        {{-- <div id="tourSwiper" class="swiper mySwiper mt-12">
             <div class="swiper-wrapper">
                 <div class="swiper-slide">
                     <div class="col-span-1 relative border-[#E4E6E8] border rounded-3xl">
@@ -631,7 +498,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> --}}
     </section>
 
 

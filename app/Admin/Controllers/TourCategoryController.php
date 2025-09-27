@@ -28,7 +28,7 @@ class TourCategoryController extends AdminController
 
         $grid->column('id', __('Id'));
         $grid->column('name', __('Name'));
-        $grid->column('image', __('Image'));
+        $grid->column('image', __('Image'))->image('/uploads/',50,50);
 
 
 

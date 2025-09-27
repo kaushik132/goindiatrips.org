@@ -31,7 +31,7 @@
     <!-- Logo -->
     <div>
       <a href="{{url('/')}}">
-        <img class="w-[60px] md:w-[90px]" src="./images/logo.png" alt="Logo" />
+        <img class="w-[60px] md:w-[90px]" src="{{url('images/logo.png')}}" alt="Logo" />
       </a>
     </div>
 <!-- Desktop Menu -->

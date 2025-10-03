@@ -116,7 +116,7 @@ class TourController extends AdminController
         $form->hasMany('packagedetailsinsert','PackageItinerary', function (Form\NestedForm $form) {
 		          $form->text('order_num', __('Order Num'));
 		          $form->text('name', __('Name'));
-                  $form->time('time', __('Time'));
+                  $form->text('time', __('Time'));
 			        $form->textarea('description', __('Description'));
 		     });
 
@@ -130,7 +130,7 @@ class TourController extends AdminController
         $form->text('price', __('Price'));
         $form->text('discount_price', __('Discount price'));
         $form->text('discount_off', __('Discount off'));
-        $form->textarea('important-information', __('Important information'));
+        $form->textarea('important_information', __('Important Information'));
             $form->switch('is_featured', __('Is Featured'))->options([
     1 => 'Active',
     0 => 'Inactive',

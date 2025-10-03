@@ -9,6 +9,7 @@ use App\Models\ContactUs;
 use App\Models\Tour;
 use App\Models\TourCategory;
 use App\Models\Tourdetails;
+use App\Models\Testimonials;
 use Illuminate\Support\Facades\View;
 
 
@@ -25,7 +26,8 @@ class HomeController extends Controller
 
     public function index()
     {
-        return view('index');
+        $alltestimonials = Testimonials::all();
+        return view('index',compact('alltestimonials'));
     }
     public function aboutUs()
     {
@@ -64,7 +66,7 @@ class HomeController extends Controller
 
     public function tourdetails($slug = null)
     {
-            // $alltour = Tour::inRandomOrder()->with('tourCategorys')->get();
+            $alltour = Tour::inRandomOrder()->with('tourCategorys')->get();
         $tourData = Tour::with('tourCategorys')->where('slug', $slug)->first();
         // $seo_data['seo_title'] = $tourData->seo_title;
         // $seo_data['seo_description'] = $tourData->seo_description;
@@ -74,7 +76,7 @@ class HomeController extends Controller
 
 
         $destinationsdetails = Tourdetails::orderBy('order_num', 'asc')->where('package_id', $tourData->id)->get();
-        return view('tour-details', compact('tourData','destinationsdetails'));
+        return view('tour-details', compact('tourData','destinationsdetails','alltour'));
     }
     public function contactUs()
     {

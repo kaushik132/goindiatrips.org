@@ -5,7 +5,7 @@
         class="bg-[url('{{url('uploads/'.$tourData->banner_image)}}')] relative bg-no-repeat bg-center bg-cover pt-[110px] pb-[210px] lg:pb-[100px] lg:py-[160px]">
         <div class="text-center">
             <h2 class="lg:text-[48px] text-white text-[24px] font-semibold -mt-1 lg:-mt-3">
-                Albert Hall
+             {{$tourData->title}}
             </h2>
         </div>
         <div
@@ -186,26 +186,6 @@
                     </p>
                 </div>
 
-                {{-- <div class="lg:mt-10 mt-6">
-                    <h2 class="lg:text-[32px] text-[20px]">Tour Highlights</h2>
-
-                    <ul class="mt-1 list-disc pl-5 space-y-2 lg:text-[16px] text-[12px]">
-                        <li>
-                            <p>
-                                Visit the iconic Hawa Mahal with 953 intricately carved
-                                windows
-                            </p>
-                        </li>
-
-                        <li>
-                            <p>Discover the astronomical wonders at Jantar Mantar</p>
-                        </li>
-
-                        <li>
-                            <p>Professional photography assistance at key locations</p>
-                        </li>
-                    </ul>
-                </div> --}}
 
                 <!-- Tabs -->
                 <div class="lg:mt-12 mt-8 flex justify-center">
@@ -278,7 +258,7 @@
                     </div>
                     <div>
                         <p class="lg:text-[16px] text-[10px] text-[#8C7858]">
-                            {{ $detail->description }}
+                            {!! $detail->description !!}
                         </p>
                     </div>
                 </li>
@@ -289,38 +269,50 @@
 
 
                     <!-- Inclusion Content -->
-                    <div id="content-inclusion" class="tab-content hidden">
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                            <!-- What's Included -->
-                            <div class="bg-white rounded-2xl shadow p-6">
-                                <h3 class="text-lg font-semibold text-green-600 flex items-center gap-2 mb-3">
-                                    ✅ What's Included
-                                </h3>
-                                <ul class="space-y-2 text-sm text-gray-700">
-                                    <li>Professional English-speaking local guide</li>
-                                    <li>Air-conditioned private transportation</li>
-                                    <li>All monument entrance fees and taxes</li>
-                                    <li>Traditional Rajasthani lunch at heritage restaurant</li>
-                                    <li>Hotel pickup & drop</li>
-                                </ul>
-                            </div>
+                <div id="content-inclusion" class="tab-content hidden">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <!-- What's Included -->
+        <div class="bg-white rounded-2xl shadow p-6">
+            <h3 class="text-lg font-semibold text-green-600 flex items-center gap-2 mb-3">
+                ✅ What's Included
+            </h3>
+            <ul class="space-y-2 text-sm text-gray-700">
+                <?php
+                $includeds = $tourData->included ? explode('__', $tourData->included) : [];
+                ?>
+                @foreach ($includeds as $item)
+                    @if(trim($item) != '')
+                        <li class="flex items-start gap-2">
+                            <span class="text-green-600 text-lg">✓</span>
+                            <p>{!! trim($item) !!}</p>
+                        </li>
+                    @endif
+                @endforeach
+            </ul>
+        </div>
 
-                            <!-- What's Not Included -->
-                            <div class="bg-white rounded-2xl shadow p-6">
-                                <h3 class="text-lg font-semibold text-red-600 flex items-center gap-2 mb-3">
-                                    ❌ What's Not Included
-                                </h3>
-                                <ul class="space-y-2 text-sm text-gray-700">
-                                    <li>Personal expenses and shopping</li>
-                                    <li>Tips and gratuities (optional)</li>
-                                    <li>Travel insurance</li>
-                                    <li>Alcoholic beverages</li>
-                                    <li>Camera fees at some monuments</li>
-                                    <li>Additional activities not mentioned in itinerary</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
+        <!-- What's Not Included -->
+        <div class="bg-white rounded-2xl shadow p-6">
+            <h3 class="text-lg font-semibold text-red-600 flex items-center gap-2 mb-3">
+                ❌ What's Not Included
+            </h3>
+            <ul class="space-y-2 text-sm text-gray-700">
+                <?php
+                $excludeds = $tourData->exclusions ? explode('__', $tourData->exclusions) : [];
+                ?>
+                @foreach ($excludeds as $item)
+                    @if(trim($item) != '')
+                        <li class="flex items-start gap-2">
+                            <span class="text-red-600 text-lg">✗</span>
+                            <p>{!! trim($item) !!}</p>
+                        </li>
+                    @endif
+                @endforeach
+            </ul>
+        </div>
+    </div>
+</div>
+
 
                     <!-- Details Content -->
                     <div id="content-details" class="tab-content hidden">
@@ -331,17 +323,11 @@
                                     Important Information
                                 </h3>
                                 <p class="text-sm text-gray-600 mb-2">
-                                    <strong>Meeting Point:</strong> Hotel lobby pickup available
-                                    within Jaipur city limits. For hotels outside city center,
-                                    meeting point will be confirmed.
+                                       <li>{!! $tourData->important_information!!}</li>
+
                                 </p>
-                                <p class="text-sm text-gray-600 mb-2">
-                                    <strong>Languages:</strong> English, Hindi, Rajasthani
-                                </p>
-                                <p class="text-sm text-gray-600">
-                                    <strong>Best Time to Visit:</strong> October to March
-                                    (optimal weather), Year-round availability
-                                </p>
+
+
                             </div>
 
                             <!-- Cancellation Policy -->
@@ -368,10 +354,10 @@
             <div class="col-span-1 mt-7">
                 <div>
                     <p class="lg:text-[28px] text-[20px] font-medium">
-                        ₹2,499
-                        <del class="text-[#858484] lg:text-[18px] text-[15px] ml-2">₹2,999</del>
+                        {!!$tourData->discount_price!!}
+                        <del class="text-[#858484] lg:text-[18px] text-[15px] ml-2">{!!$tourData->price!!}</del>
                     </p>
-                    <p class="text-[#8C7858] lg:text-[15px] text-[12px]">Per Person</p>
+                    {{-- <p class="text-[#8C7858] lg:text-[15px] text-[12px]">Per Person</p> --}}
 
                     <form class="mt-4">
                         <div>
@@ -417,7 +403,7 @@
                                 Duration:
                             </p>
 
-                            <p class="lg:text-[15px] text-[13px]">8 Hours</p>
+                            <p class="lg:text-[15px] text-[13px]">{{$tourData->time_date}}</p>
                         </div>
 
                         <div class="text-[15px] flex justify-between font-medium">
@@ -425,13 +411,13 @@
                                 Group Size:
                             </p>
 
-                            <p class="lg:text-[15px] text-[13px]">2-15 People</p>
+                            <p class="lg:text-[15px] text-[13px]">{{$tourData->number_of_person}}</p>
                         </div>
 
                         <div class="text-[15px] flex justify-between font-medium">
                             <p class="text-[#8C7858] lg:text-[15px] text-[13px]">Rating:</p>
 
-                            <p class="lg:text-[15px] text-[13px]">⭐ 4.9/5</p>
+                            <p class="lg:text-[15px] text-[13px]">⭐ {{$tourData->rating}}/5</p>
                         </div>
                     </div>
                 </div>
@@ -446,7 +432,9 @@
         <!-- Container -->
         <div id="tourSwiper" class="swiper mySwiper mt-4">
             <div class="swiper-wrapper">
-                <div class="swiper-slide">
+
+
+                {{-- <div class="swiper-slide">
                     <div class="col-span-1 relative border-[#E4E6E8] border rounded-3xl">
                         <div>
                             <img class="h-[270px] w-full object-cover rounded-t-3xl" src="./images/img1.jpg" alt />
@@ -493,9 +481,60 @@
                                 Rated</span>
                         </div>
                     </div>
-                </div>
+                </div> --}}
+@foreach ($alltour as $touraa)
+
 
                 <div class="swiper-slide">
+                    <div class="col-span-1 relative border-[#E4E6E8] border rounded-3xl">
+                        <div>
+                            <img class="h-[270px] w-full object-cover rounded-t-3xl" src="{{url('uploads/'.$touraa->thumnail_image)}}" alt />
+                        </div>
+
+                        <div class="bg-white px-6 py-7 lg:py-9 rounded-3xl -mt-10 relative z-[99]">
+                            <h3 class="lg:text-[20px] text-[16px] font-semibold">
+                                 {{$touraa->title}}
+                            </h3>
+
+                            <div class="mt-2 flex gap-6">
+                                <div class="flex gap-1 items-center">
+                                    <i class="fa-solid fa-clock text-[#737373] text-[10px]"></i>
+                                    <span class="text-[#737373] lg:text-[12px] text-[11px]">{{$touraa->time_date}}</span>
+                                </div>
+                                <div class="flex gap-1 items-center">
+                                    <i class="fa-solid fa-user text-[#737373] text-[10px]"></i>
+                                    <span class="text-[#737373] lg:text-[12px] text-[11px]">{{$touraa->number_of_person}}</span>
+                                </div>
+                            </div>
+
+                            <div class="mt-6 flex justify-between items-center">
+                                <h2 class="font-semibold lg:text-[20px] text-[17px]">
+                                 {{$touraa->price}}
+                                </h2>
+                                <a href="{{url('tour-details/'.$touraa->slug)}}"
+                                    class="lg:text-[14px] text-[12px] border-[#E4E6E8] border px-6 py-1.5 rounded-full">Book
+                                    Now</a>
+                            </div>
+
+                            <div
+                                class="border-[#E4E6E8] flex gap-2 items-center shadow border px-4 bg-white right-8 -top-4 py-1.5 absolute inline-block rounded-full">
+                                <i class="fa-solid fa-star text-[#FFC700] text-[11px] lg:text-[12px]"></i>
+                                <p class="lg:text-[12px] text-[11px] font-semibold">
+                                   {{$touraa->rating}}
+                                    <span class="text-[#737373] font-medium">( {{$touraa->review}})</span>
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="absolute top-4 left-4">
+                            <span
+                                class="lg:text-[11px] text-[10px] font-medium text-[#F09814] bg-white px-5 py-1.5 rounded-full">{{$touraa->tourCategorys->name}}</span>
+                        </div>
+                    </div>
+                </div>
+                @endforeach
+
+                {{-- <div class="swiper-slide">
                     <div class="col-span-1 relative border-[#E4E6E8] border rounded-3xl">
                         <div>
                             <img class="h-[270px] w-full object-cover rounded-t-3xl" src="./images/img1.jpg" alt />
@@ -542,9 +581,9 @@
                                 Rated</span>
                         </div>
                     </div>
-                </div>
+                </div> --}}
 
-                <div class="swiper-slide">
+                {{-- <div class="swiper-slide">
                     <div class="col-span-1 relative border-[#E4E6E8] border rounded-3xl">
                         <div>
                             <img class="h-[270px] w-full object-cover rounded-t-3xl" src="./images/img1.jpg" alt />
@@ -591,56 +630,7 @@
                                 Rated</span>
                         </div>
                     </div>
-                </div>
-
-                <div class="swiper-slide">
-                    <div class="col-span-1 relative border-[#E4E6E8] border rounded-3xl">
-                        <div>
-                            <img class="h-[270px] w-full object-cover rounded-t-3xl" src="./images/img1.jpg" alt />
-                        </div>
-
-                        <div class="bg-white px-6 py-7 lg:py-9 rounded-3xl -mt-10 relative z-[99]">
-                            <h3 class="lg:text-[20px] text-[16px] font-semibold">
-                                Singapore Skylines: Urban Exploration
-                            </h3>
-
-                            <div class="mt-2 flex gap-6">
-                                <div class="flex gap-1 items-center">
-                                    <i class="fa-solid fa-clock text-[#737373] text-[10px]"></i>
-                                    <span class="text-[#737373] lg:text-[12px] text-[11px]">2 days 3 nights</span>
-                                </div>
-                                <div class="flex gap-1 items-center">
-                                    <i class="fa-solid fa-user text-[#737373] text-[10px]"></i>
-                                    <span class="text-[#737373] lg:text-[12px] text-[11px]">2 Person</span>
-                                </div>
-                            </div>
-
-                            <div class="mt-6 flex justify-between items-center">
-                                <h2 class="font-semibold lg:text-[20px] text-[17px]">
-                                    ₹4800
-                                </h2>
-                                <a href="#"
-                                    class="lg:text-[14px] text-[12px] border-[#E4E6E8] border px-6 py-1.5 rounded-full">Book
-                                    Now</a>
-                            </div>
-
-                            <div
-                                class="border-[#E4E6E8] flex gap-2 items-center shadow border px-4 bg-white right-8 -top-4 py-1.5 absolute inline-block rounded-full">
-                                <i class="fa-solid fa-star text-[#FFC700] text-[11px] lg:text-[12px]"></i>
-                                <p class="lg:text-[12px] text-[11px] font-semibold">
-                                    4.96
-                                    <span class="text-[#737373] font-medium">(672 reviews)</span>
-                                </p>
-                            </div>
-                        </div>
-
-                        <div class="absolute top-4 left-4">
-                            <span
-                                class="lg:text-[11px] text-[10px] font-medium text-[#F09814] bg-white px-5 py-1.5 rounded-full">Top
-                                Rated</span>
-                        </div>
-                    </div>
-                </div>
+                </div> --}}
             </div>
         </div>
     </section>

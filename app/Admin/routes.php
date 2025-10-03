@@ -18,4 +18,5 @@ Route::group([
     $router->resource('tour-categories', TourCategoryController::class);
     $router->resource('tours', TourController::class);
     $router->resource('tourdetails', TourDetailsController::class);
+    $router->resource('testimonials', TestimonialsController::class);
 });

@@ -87,7 +87,12 @@ class HomeController extends Controller
         $request->validate([
             'fname' => 'required|string|max:255',
             'lname' => 'required|string|max:255',
-            'email' => 'required|email|max:255',
+         'email' => [
+    'required',
+    'email',
+    'max:255',
+    'regex:/^[a-zA-Z0-9._%+-]+@gmail\.com$/i'
+],
             // 'phone' => 'required|string|max:20',
             'message' => 'required|string',
             'terms' => 'accepted',

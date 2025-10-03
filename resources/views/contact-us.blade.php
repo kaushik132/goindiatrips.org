@@ -111,12 +111,7 @@
                 <div class="lg:w-[60%]">
                     <form action="{{ route('contact-us-post') }}" method="POST">
                         @csrf
-                        <div class="lg:flex gap-6">
-                            <div class="flex-1">
-                                <label class="lg:text-[14px] text-[12px] font-medium">FIRST NAME</label>
-                                <input name="fname" type="text" value="{{ old('fname') }}"
-                                    class="w-full border mt-1 text-[12px] lg:text-[15px] py-1.5 px-4 rounded-md" />
-                                @if (Session::has('message'))
+                               @if (Session::has('message'))
                                     <script>
                                         toastr.options = {
                                             "progressBar": true,
@@ -127,6 +122,17 @@
                                         });
                                     </script>
                                 @endif
+                        <div class="lg:flex gap-6">
+                            <div class="flex-1">
+                                <label class="lg:text-[14px] text-[12px] font-medium">FIRST NAME</label>
+                                <input name="fname" type="text" value="{{ old('fname') }}"
+                                    class="w-full border mt-1 text-[12px] lg:text-[15px] py-1.5 px-4 rounded-md" />
+                                    <span>
+                                    @error('fname')
+                                        <p class="text-red-500 text-[10px] mt-1">{{ $message }}</p>
+                                    @enderror
+                                    </span>
+
                             </div>
 
                             <div class="flex-1 mt-2 lg:mt-0">

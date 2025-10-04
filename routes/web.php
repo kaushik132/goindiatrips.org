@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\SitemapController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -23,3 +24,6 @@ Route::get('tour-and-package/{slug?}',[HomeController::class,'tourandpackage'])-
 Route::get('tour-details/{slug?}',[HomeController::class,'tourdetails'])->name('tour-and-package');
 Route::get('contact-us',[HomeController::class,'contactUs'])->name('contact-us');
 Route::post('contact-us',[HomeController::class,'contactUsPost'])->name('contact-us-post');
+
+
+Route::get('sitemap.xml',[SitemapController::class, 'index']);

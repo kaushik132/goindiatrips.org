@@ -11,6 +11,7 @@ use App\Models\TourCategory;
 use App\Models\Tourdetails;
 use App\Models\Testimonials;
 use \App\Models\Title;
+use App\Models\Info;
 use Illuminate\Support\Facades\View;
 
 
@@ -21,6 +22,8 @@ class HomeController extends Controller
     {
         $headerTourCategory = TourCategory::all();
         $headerTour = Tour::all();
+        $headerInfo = Info::first();
+        View::share('headerInfo', $headerInfo);
         View::share('headerTourCategory', $headerTourCategory);
         View::share('headerTour', $headerTour);
     }

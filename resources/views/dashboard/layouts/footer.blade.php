@@ -12,26 +12,26 @@
             <div class="mt-5">
                 <ul class="flex gap-4 ">
                     <li>
-                        <a href="#"
+                        <a href="{{$headerInfo->twitter_link}}"
                             class="border-[rgba(0,0,0,.1)] flex justify-center items-center border
           h-[38px] w-[38px] rounded-full "><i
                                 class="fa-brands fa-youtube text-[16px] text-white"></i></a>
                     </li>
 
                     <li>
-                        <a href="#"
+                        <a href="{{$headerInfo->instagram_link}}"
                             class="border-[rgba(0,0,0,.1)] flex justify-center items-center border h-[38px] w-[38px] rounded-full "><i
                                 class="fa-brands fa-youtube text-[16px] text-white"></i></a>
                     </li>
 
                     <li>
-                        <a href="#"
+                        <a href="{{$headerInfo->facebook_link}}"
                             class="border-[rgba(0,0,0,.1)] flex justify-center items-center border h-[38px] w-[38px] rounded-full "><i
                                 class="fa-brands fa-youtube text-[16px] text-white"></i></a>
                     </li>
 
                     <li>
-                        <a href="#"
+                        <a href="{{$headerInfo->youtube_link}}"
                             class="border-[rgba(0,0,0,.1)] flex justify-center items-center border h-[38px] w-[38px] rounded-full "><i
                                 class="fa-brands fa-youtube text-[16px] text-white"></i></a>
                     </li>
@@ -100,17 +100,16 @@
 
             <ul class="lg:mt-5 mt-3 space-y-1 lg:text-[15px] text-[13px]">
                 <li>
-                    <a href="#" class=" text-white">123 Maple Street, Springfield
-                        Documentation
-                        Commentry</a>
+                    <a href="#" class="text-white">{{$headerInfo->address ?? '123 Maple Street, Springfield'}}
+                        </a>
                 </li>
 
                 <li>
-                    <a href="#" class=" text-white">+91 6292226351</a>
+                   <a href="tel:+91{{$headerInfo->mobile_number}}" class="text-white">+91 {{$headerInfo->mobile_number}}</a>
                 </li>
 
                 <li>
-                    <a href="#" class="  text-white">hello@uiwiki.co</a>
+                    <a href="mailto:{{$headerInfo->email}}" class="text-white">{{$headerInfo->email}}</a>
                 </li>
 
 
@@ -137,17 +136,15 @@
 
             <ul class="lg:mt-5 mt-3 space-y-1 lg:text-[15px] text-[13px]">
                 <li>
-                    <a href="#" class=" text-white">123 Maple Street, Springfield
-                        Documentation
-                        Commentry</a>
+                    <a href="#" class=" text-white">{{$headerInfo->address ?? '123 Maple Street, Springfield'}}</a>
                 </li>
 
                 <li>
-                    <a href="#" class=" text-white">+91 6292226351</a>
+                    <a href="tel:+91{{$headerInfo->mobile_number}}" class=" text-white">+91 {{$headerInfo->mobile_number}}</a>
                 </li>
 
                 <li>
-                    <a href="#" class="  text-white">hello@uiwiki.co</a>
+                    <a href="mailto:{{$headerInfo->email}}" class="  text-white">{{$headerInfo->email}}</a>
                 </li>
 
 
@@ -157,7 +154,7 @@
     </div>
 
     <div class="lg:py-[30px] py-[15px] border-[rgba(0,0,0,.1)] border-t">
-        <p class="lg:text-[15px] text-[13px] text-white text-center">© Triloe Inc. All Rights Reserved.</p>
+        <p class="lg:text-[15px] text-[13px] text-white text-center">© Goindiatrips. All Rights Reserved.</p>
     </div>
 </footer>
 

@@ -206,7 +206,7 @@
 
                     <div>
                         <h2 class="text-[15px]">Email</h2>
-                        <p class="text-[14px]">hello@uiwiki.co</p>
+                        <p class="text-[14px]">{{$headerInfo->email}}</p>
                     </div>
                 </div>
 
@@ -218,13 +218,14 @@
 
                     <div>
                         <h2 class="text-[15px]">Phone</h2>
-                        <p class="text-[14px]">6232 1151 2211</p>
+                        <p class="text-[14px]">{{$headerInfo->mobile_number}}</p>
                     </div>
                 </div>
 
                 <div class="flex gap-4 items-center justify-center justify-start lg:pl-10">
                     <p class="text-[15px] font-medium">Follows Us</p>
                     <i
+                    
                         class="fa-brands fa-x-twitter h-10 text-[14px] w-10 border rounded-full flex justify-center items-center"></i>
                     <i
                         class="fa-brands fa-instagram h-10 text-[14px] w-10 border rounded-full flex justify-center items-center"></i>

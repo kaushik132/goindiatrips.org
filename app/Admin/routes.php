@@ -20,4 +20,7 @@ Route::group([
     $router->resource('tourdetails', TourDetailsController::class);
     $router->resource('testimonials', TestimonialsController::class);
     $router->resource('titles', TitleController::class);
+    $router->resource('infos', InfoController::class);
+
+
 });

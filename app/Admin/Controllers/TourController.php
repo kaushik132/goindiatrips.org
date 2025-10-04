@@ -126,6 +126,11 @@ class TourController extends AdminController
         $form->textarea('included', __('Included'));
         $form->textarea('exclusions', __('Exclusions'));
            });
+   $form->tab('SEO', function ($form) {
+        $form->text('seo_title', __('Seo Title'));
+        $form->textarea('seo_description', __('Seo Description'));
+        $form->textarea('seo_keyword', __('Seo Keyword'));
+           });
     $form->tab('Price & Info', function ($form) {
         $form->text('price', __('Price'));
         $form->text('discount_price', __('Discount price'));

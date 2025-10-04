@@ -2,7 +2,7 @@
 @section('container.main')
     <!-- hero section -->
     <section id="heroSection"
-        class="bg-[url('./images/img2.jpg')] relative bg-no-repeat bg-center bg-cover pt-[110px] pb-[210px] lg:pb-[100px] lg:py-[160px]">
+        class="bg-[url('{{url('images/img2.jpg')}}')] relative bg-no-repeat bg-center bg-cover pt-[110px] pb-[210px] lg:pb-[100px] lg:py-[160px]">
         <div class="text-center">
             <h2 class="lg:text-[48px] text-white text-[24px] font-semibold -mt-1 lg:-mt-3">
                 Tour & Package
@@ -111,7 +111,7 @@
             <div class="swiper-wrapper">
                 <!-- Slide 1 -->
                 <div
-                    class="swiper-slide pt-[100px] pb-[40px] flex justify-end items-end rounded-2xl px-[30px] relative bg-[url('./images/10.png')] bg-no-repeat bg-cover bg-center w-full h-[260px]">
+                    class="swiper-slide pt-[100px] pb-[40px] flex justify-end items-end rounded-2xl px-[30px] relative bg-[url('{{url('images/10.png')}}')] bg-no-repeat bg-cover bg-center w-full h-[260px]">
                     <div class="inline-block w-[44%]">
                         <h2 class="text-[22px] block leading-[30px] font-semibold text-white">
                             We Make Every Trips Special
@@ -125,7 +125,7 @@
 
                 <!-- Slide 2 -->
                 <div
-                    class="swiper-slide pt-[40px] pb-[100px] rounded-2xl px-[30px] relative bg-[url('./images/11.png')] bg-no-repeat bg-cover bg-center w-full h-[260px]">
+                    class="swiper-slide pt-[40px] pb-[100px] rounded-2xl px-[30px] relative bg-[url('{{url('images/11.png')}}')] bg-no-repeat bg-cover bg-center w-full h-[260px]">
                     <div class="inline-block w-[44%]">
                         <h2 class="text-[22px] block leading-[30px] font-semibold">
                             Buy 1, Get 1 Free Attractions
@@ -139,7 +139,7 @@
 
                 <!-- Slide 3 -->
                 <div
-                    class="swiper-slide pt-[40px] pb-[100px] rounded-2xl px-[30px] relative bg-[url('./images/12.png')] bg-no-repeat bg-cover bg-center w-full h-[260px]">
+                    class="swiper-slide pt-[40px] pb-[100px] rounded-2xl px-[30px] relative bg-[url('{{url('images/12.png')}}')] bg-no-repeat bg-cover bg-center w-full h-[260px]">
                     <div class="inline-block w-[44%]">
                         <h2 class="text-[22px] block leading-[30px] font-semibold">
                             Buy 1, Get 1 Free Attractions
@@ -153,7 +153,7 @@
 
                 <!-- Slide 3 -->
                 <div
-                    class="swiper-slide pt-[40px] pb-[100px] rounded-2xl px-[30px] relative bg-[url('./images/12.png')] bg-no-repeat bg-cover bg-center w-full h-[260px]">
+                    class="swiper-slide pt-[40px] pb-[100px] rounded-2xl px-[30px] relative bg-[url('{{url('images/12.png')}}')] bg-no-repeat bg-cover bg-center w-full h-[260px]">
                     <div class="inline-block w-[44%]">
                         <h2 class="text-[22px] block leading-[30px] font-semibold">
                             Buy 1, Get 1 Free Attractions
@@ -266,7 +266,7 @@
 
         <div class="grid lg:grid-cols-4 grid-cols-2 auto-rows-[130px] lg:auto-rows-[250px] gap-3 lg:gap-6">
             <div class="lg:col-span-3 col-span-2 row-span-2 relative">
-                <img class="w-full h-full rounded-2xl object-cover" src="./images/15.jpg" alt="" />
+                <img class="w-full h-full rounded-2xl object-cover" src="{{url('images/15.jpg')}}" alt="15" />
 
                 <div
                     class="flex justify-between w-full px-4 lg:px-6 bg-black/10 backdrop-blur rounded-b-2xl bottom-0 lg:py-6 py-3 items-center absolute">
@@ -275,17 +275,17 @@
                     </h2>
 
                     <a class="bg-white text-black lg:h-[50px] lg:w-[50px] h-[40px] w-[40px] rounded-full flex justify-center items-center"
-                        href="#"><i
+                        href="{{url('gallery')}}"><i
                             class="fa-solid fa-arrow-right lg:text-[16px] text-[14px] rotate-[240deg]"></i></a>
                 </div>
             </div>
 
             <div class="col-span-1">
-                <img class="w-full h-full rounded-2xl" src="./images/17.jpg" alt="" />
+                <img class="w-full h-full rounded-2xl" src="{{url('images/17.jpg')}}" alt="17" />
             </div>
 
             <div class="col-span-1">
-                <img class="w-full h-full rounded-2xl" src="./images/16.jpg" alt="" />
+                <img class="w-full h-full rounded-2xl" src="{{url('images/16.jpg')}}" alt="16" />
             </div>
         </div>
     </section>
